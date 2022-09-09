@@ -6,7 +6,7 @@
   console.log(currentText);
 
   const loadHTML = async (html) => {
-    document.getElementById("html").innerHTML = html;
+    document.querySelector("div#sideBar > iframe").srcdoc = html;
   };
 
   if (document.querySelector("#sideBar")) {
@@ -15,17 +15,16 @@
     loadHTML(html);
   } else if (!document.querySelector("#sideBar")) {
     const sideBar = document.createElement("div");
-    sideBar.innerHTML = `<div id="html" style="z-index: 10;padding: 10px;height: 100%;overflow: auto;">
-  </div>`;
+    sideBar.innerHTML = `<iframe id="html" style="z-index: 10;padding: 10px;height: 100%;overflow: auto;">
+  </iframe>`;
     sideBar.id = "sideBar";
-    document.querySelector("body").style.paddingRight = "400px";
+    document.querySelector("body").style.paddingRight = "350px";
 
     sideBar.style.cssText = `
       position: fixed;
       right: 0px;
       top: 0px;
       z-index: 9999;
-      width: 400px;
       height: 100%;
       background-color: whitesmoke;`;
 
